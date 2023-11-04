@@ -40,7 +40,6 @@ jobs:
 
       - name: Clear unnecessary files
         run: |
-          shopt -s extglob
           rm -rf !(www)
         working-directory: ${{ github.workspace }}
 
