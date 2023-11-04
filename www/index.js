@@ -1,5 +1,5 @@
-import { Chip8 } from "rust-chip8";
-import { memory } from "rust-chip8/rust_chip8_bg.wasm";
+import { Chip8 } from "chip8";
+import { memory } from "chip8/chip8_bg.wasm";
 import keyMap from "./keyMap";
 
 const videoWidth = Chip8.video_width();

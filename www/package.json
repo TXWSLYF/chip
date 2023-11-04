@@ -13,7 +13,7 @@
     "webpack"
   ],
   "dependencies": {
-    "rust-chip8": "file:../pkg"
+    "chip8": "file:../pkg"
   },
   "devDependencies": {
     "webpack": "^4.29.3",
