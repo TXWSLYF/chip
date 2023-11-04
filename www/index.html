@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Chip-8 emulator</title>
+    <style>
+      #screen {
+        border: 1px solid;
+        width: 640px;
+        height: 320px;
+        image-rendering: pixelated;
+      }
+    </style>
+  </head>
+
+  <body>
+    <noscript
+      >This page contains webassembly and javascript content, please enable
+      javascript in your browser.</noscript
+    >
+    <script src="./bootstrap.js"></script>
+    <canvas width="64" height="32" id="screen"></canvas>
+    <input type="file" id="file-input" />
+  </body>
+</html>
