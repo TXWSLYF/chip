@@ -38,13 +38,27 @@ jobs:
         run: yarn build
         working-directory: www
 
+      - name: Clear unnecessary files
+        run: |
+          rm -rf *
+          rm -rf .git
+          rm -rf .github
+          rm -f .gitignore
+          rm -f .gitattributes
+          # Add more files and directories to remove if needed
+        working-directory: ${{ github.workspace }}
+
+      - name: Copy www/dist/ to gh-pages
+        run: |
+          cp -r www/dist/* .
+        working-directory: ${{ github.workspace }}
+
       - name: Deploy to GitHub Pages
         run: |
           git config --global user.email "actions@github.com"
           git config --global user.name "GitHub Actions"
           git checkout --orphan gh-pages
           git rm -rf .
-          cp -r www/dist/* .
           git add .
           git commit -m "Deploy to GitHub Pages"
           git push -f origin gh-pages
