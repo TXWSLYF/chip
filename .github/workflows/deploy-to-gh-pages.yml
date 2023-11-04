@@ -40,17 +40,14 @@ jobs:
 
       - name: Clear unnecessary files
         run: |
-          rm -rf *
-          rm -rf .git
-          rm -rf .github
-          rm -f .gitignore
-          rm -f .gitattributes
-          # Add more files and directories to remove if needed
+          shopt -s extglob
+          rm -rf !(www)
         working-directory: ${{ github.workspace }}
 
       - name: Copy www/dist/ to gh-pages
         run: |
           cp -r www/dist/* .
+          rm -rf www
         working-directory: ${{ github.workspace }}
 
       - name: Deploy to GitHub Pages
