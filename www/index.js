@@ -8,7 +8,7 @@ const fileInputEl = document.getElementById("file-input");
 const screenEl = document.getElementById("screen");
 const screenContext = screenEl.getContext("2d");
 
-function drawScreenToCanvas(screenData, width, height) {
+const drawScreenToCanvas = (screenData, width, height) => {
   const imageData = new ImageData(width, height);
 
   for (let i = 0; i < screenData.length; i++) {
@@ -28,7 +28,7 @@ function drawScreenToCanvas(screenData, width, height) {
   }
 
   screenContext.putImageData(imageData, 0, 0);
-}
+};
 
 fileInputEl.addEventListener("change", (e) => {
   const file = e.target.files && e.target.files[0];
@@ -67,9 +67,12 @@ fileInputEl.addEventListener("change", (e) => {
           videoWidth * videoHeight
         );
         drawScreenToCanvas(chipScreen, videoWidth, videoHeight);
-        for (let i = 0; i < 4; i++) {
+
+        for (let i = 0; i < 12; i++) {
           chip8.cycle();
         }
+
+        chip8.update_timers();
         requestAnimationFrame(renderLoop);
       };
 

@@ -423,7 +423,9 @@ impl Chip8 {
             }
             _ => {}
         }
+    }
 
+    pub fn update_timers(&mut self) {
         if self.delay_timer > 0 {
             self.delay_timer = self.delay_timer.wrapping_sub(1);
         }
